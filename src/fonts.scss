@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'Filson Pro Thin';
+  font-weight: 100;
+  src: local('Filson Pro Thin'),
+    url('./fonts/FilsonProThin-Thin.otf') format('opentype'),
+    url('./fonts/FilsonProThin-Thin.woff2') format('woff2'),
+    url('./fonts/FilsonProThin-Thin.woff') format('woff'),
+    url('./fonts/FilsonProThin-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Thin Italic';
+  font-weight: 100;
+  font-style: italic;
+  src: local('Filson Pro Thin Italic'),
+    url('./fonts/FilsonProThinItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProThinItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProThinItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProThinItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Light';
+  font-weight: 200;
+  src: local('Filson Pro Light'),
+    url('./fonts/FilsonProLight-Light.otf') format('opentype'),
+    url('./fonts/FilsonProLight-Light.woff2') format('woff2'),
+    url('./fonts/FilsonProLight-Light.woff') format('woff'),
+    url('./fonts/FilsonProLight-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Light Italic';
+  font-weight: 200;
+  font-style: italic;
+  src: local('Filson Pro Light Italic'),
+    url('./fonts/FilsonProLightItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProLightItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProLightItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProLightItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Book';
+  font-weight: 300;
+  src: local('Filson Pro Book'),
+    url('./fonts/FilsonProBook-Book.otf') format('opentype'),
+    url('./fonts/FilsonProBook-Book.woff2') format('woff2'),
+    url('./fonts/FilsonProBook-Book.woff') format('woff'),
+    url('./fonts/FilsonProBook-Book.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Book Italic';
+  font-weight: 300;
+  font-style: italic;
+  src: local('Filson Pro Book Italic'),
+    url('./fonts/FilsonProBookItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProBookItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProBookItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProBookItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Regular';
+  font-weight: 400;
+  src: local('Filson Pro Regular'),
+    url('./fonts/FilsonProRegular-Regular.otf') format('opentype'),
+    url('./fonts/FilsonProRegular-Regular.woff2') format('woff2'),
+    url('./fonts/FilsonProRegular-Regular.woff') format('woff'),
+    url('./fonts/FilsonProRegular-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Regular Italic';
+  font-weight: 400;
+  font-style: italic;
+  src: local('Filson Pro Regular Italic'),
+    url('./fonts/FilsonProRegularItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProRegularItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProRegularItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProRegularItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Medium';
+  font-weight: 500;
+  src: local('Filson Pro Medium'),
+    url('./fonts/FilsonProMedium-Medium.otf') format('opentype'),
+    url('./fonts/FilsonProMedium-Medium.woff2') format('woff2'),
+    url('./fonts/FilsonProMedium-Medium.woff') format('woff'),
+    url('./fonts/FilsonProMedium-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Medium Italic';
+  font-weight: 500;
+  font-style: italic;
+  src: local('Filson Pro Medium Italic'),
+    url('./fonts/FilsonProMediumItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProMediumItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProMediumItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProMediumItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Bold';
+  font-weight: 600;
+  src: local('Filson Pro Bold'),
+    url('./fonts/FilsonProBold-Bold.otf') format('opentype'),
+    url('./fonts/FilsonProBold-Bold.woff2') format('woff2'),
+    url('./fonts/FilsonProBold-Bold.woff') format('woff'),
+    url('./fonts/FilsonProBold-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Bold Italic';
+  font-weight: 600;
+  font-style: italic;
+  src: local('Filson Pro Bold Italic'),
+    url('./fonts/FilsonProBoldItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProBoldItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProBoldItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProBoldItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Heavy';
+  font-weight: 700;
+  src: local('Filson Pro Heavy'),
+    url('./fonts/FilsonProHeavy-Heavy.otf') format('opentype'),
+    url('./fonts/FilsonProHeavy-Heavy.woff2') format('woff2'),
+    url('./fonts/FilsonProHeavy-Heavy.woff') format('woff'),
+    url('./fonts/FilsonProHeavy-Heavy.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Heavy Italic';
+  font-weight: 700;
+  font-style: italic;
+  src: local('Filson Pro Heavy Italic'),
+    url('./fonts/FilsonProHeavyItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProHeavyItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProHeavyItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProHeavyItalic-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Black';
+  font-weight: 900;
+  src: local('Filson Pro Black'),
+    url('./fonts/FilsonProBlack-Black.otf') format('opentype'),
+    url('./fonts/FilsonProBlack-Black.woff2') format('woff2'),
+    url('./fonts/FilsonProBlack-Black.woff') format('woff'),
+    url('./fonts/FilsonProBlack-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Filson Pro Black Italic';
+  font-weight: 900;
+  font-style: italic;
+  src: local('Filson Pro Black Italic'),
+    url('./fonts/FilsonProBlackItalic-Italic.otf') format('opentype'),
+    url('./fonts/FilsonProBlackItalic-Italic.woff2') format('woff2'),
+    url('./fonts/FilsonProBlackItalic-Italic.woff') format('woff'),
+    url('./fonts/FilsonProBlackItalic-Italic.ttf') format('truetype');
+}
