@@ -1,4 +1,5 @@
-var firebaseConfig = {
+// firebase config
+export const firebaseConfig = {
   apiKey: 'AIzaSyDoYEtOubQjMCc5uQuzUnvYk4bLcfRR0GQ',
   authDomain: 'adopt-puppy-5692a.firebaseapp.com',
   databaseURL: 'https://adopt-puppy-5692a.firebaseio.com',
