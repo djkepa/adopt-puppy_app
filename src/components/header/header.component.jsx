@@ -1,10 +1,10 @@
 // Libraries
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-// Utils
-import { auth } from './../../firebase/utils';
+// Redux
+import { signOutUserStart } from './../../redux/User/user.actions';
 
 // Styles
 import './header.styles.scss';
@@ -13,39 +13,54 @@ import './header.styles.scss';
 import Logo from './../../assets/logo.png';
 
 // Map func
-const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapState = (state) => ({
+  currentUser: state.user.currentUser,
 });
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { currentUser } = useSelector(mapState);
+
+  const signOut = () => {
+    dispatch(signOutUserStart());
+  };
+
   return (
     <header className="header">
       <div className="wrap">
         <div className="logo">
           <Link to="/">
-            <img src={Logo} alt="Adopt-puppy Logo" />
+            <img src={Logo} alt="SimpleTut LOGO" />
           </Link>
         </div>
+
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
+          </ul>
+        </nav>
+
         <div className="callToActions">
           <ul>
             {currentUser && [
               <li key={1}>
-                <Link to="/">Home</Link>
+                <Link to="/dashboard">My Account</Link>
               </li>,
               <li key={2}>
-                <span onClick={() => auth.signOut()}>LogOut</span>
+                <span onClick={() => signOut()}>LogOut</span>
               </li>,
             ]}
 
             {!currentUser && [
               <li key={1}>
-                <Link to="/dashboard">Register</Link>
-              </li>,
-              <li key={2}>
                 <Link to="/registration">Register</Link>
               </li>,
-              <li key={3}>
+              <li key={2}>
                 <Link to="/login">Login</Link>
               </li>,
             ]}
