@@ -10,7 +10,7 @@ import {
 
 // Components
 import AuthWrapper from './../auth-wrapper/auth-wrapper.component';
-import FormInput from './../forms/form-input/form-input.styles.scss';
+import FormInput from './../forms/form-input/form-input.component';
 import Button from './../forms/button/button.component';
 
 const mapState = ({ user }) => ({

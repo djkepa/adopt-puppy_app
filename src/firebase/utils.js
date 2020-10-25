@@ -1,17 +1,15 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { firebaseConfig } from './config';
+import { config } from './config';
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: 'select_account' });
-
-// export const signInWithGoogle = () => auth.signInWithPopup(GoogleProvider);
 
 export const handleUserProfile = async ({ userAuth, additionalData }) => {
   if (!userAuth) return;
@@ -34,7 +32,7 @@ export const handleUserProfile = async ({ userAuth, additionalData }) => {
         ...additionalData,
       });
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   }
 

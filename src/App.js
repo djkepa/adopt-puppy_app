@@ -5,14 +5,13 @@ import { useDispatch } from 'react-redux';
 
 // HOC
 import WithAuth from './hoc/withAuth';
+import WithAdminAuth from './hoc/withAdminAuth';
 
 // Redux
 import { checkUserSession } from './redux/User/user.actions';
 
-// Utils
-import { auth, handleUserProfile } from './firebase/utils';
-
 // Components
+import AdminToolbar from './components/admin-toolbar/admin-toolbar.component';
 
 // Layouts
 import MainLayout from './layouts/MainLayout';
@@ -24,6 +23,7 @@ import Registration from './pages/Registration/registraton.page';
 import Login from './pages/Login/login.page';
 import Recovery from './pages/Recovery/recovery.page';
 import Dashboard from './pages/Dashboard/dashboard.page';
+import Admin from './pages/Admin/admin.page';
 
 // Styles
 import './fonts.scss';
@@ -38,6 +38,7 @@ function App(props) {
 
   return (
     <div className="App">
+      <AdminToolbar />
       <Switch>
         <Route
           exact
@@ -80,6 +81,16 @@ function App(props) {
                 <Dashboard />
               </MainLayout>
             </WithAuth>
+          )}
+        />
+        <Route
+          path="/admin"
+          render={() => (
+            <WithAdminAuth>
+              <MainLayout>
+                <Admin />
+              </MainLayout>
+            </WithAdminAuth>
           )}
         />
       </Switch>
