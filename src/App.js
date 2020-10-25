@@ -24,6 +24,8 @@ import Login from './pages/Login/login.page';
 import Recovery from './pages/Recovery/recovery.page';
 import Dashboard from './pages/Dashboard/dashboard.page';
 import Admin from './pages/Admin/admin.page';
+import Search from './pages/Search/search.page';
+import ProductDetails from './pages/Product-details/product-details.page';
 
 // Styles
 import './fonts.scss';
@@ -47,6 +49,32 @@ function App(props) {
             <HomepageLayout>
               <Homepage />
             </HomepageLayout>
+          )}
+        />
+        <Route
+          exact
+          path="/search"
+          render={() => (
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          )}
+        />
+
+        <Route
+          path="/search/:filterType"
+          render={() => (
+            <MainLayout>
+              <Search />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/product/:productID"
+          render={() => (
+            <MainLayout>
+              <ProductDetails />
+            </MainLayout>
           )}
         />
         <Route

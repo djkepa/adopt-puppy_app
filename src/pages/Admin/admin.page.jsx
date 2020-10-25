@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CKEditor from 'ckeditor4-react';
 
 // Redux
 import {
@@ -13,6 +14,7 @@ import Modal from './../../components/modal/modal.component';
 import FormInput from './../../components/forms/form-input/form-input.component';
 import FormSelect from './../../components/forms/form-select/form-select.component';
 import Button from './../../components/forms/button/button.component';
+import LoadMore from './../../components/load-more/load-more.component';
 
 // Styles
 import './admin.styles.scss';
@@ -25,14 +27,16 @@ const Admin = (props) => {
   const { products } = useSelector(mapState);
   const dispatch = useDispatch();
   const [hideModal, setHideModal] = useState(true);
-  const [productCategory, setProductCategory] = useState('mens');
+  const [productCategory, setProductCategory] = useState('toys');
   const [productName, setProductName] = useState('');
   const [productThumbnail, setProductThumbnail] = useState('');
   const [productPrice, setProductPrice] = useState(0);
   const [productWoP, setProductWoP] = useState(0);
   const [productDesc, setProductDesc] = useState('');
+  const [productDiscount, setProductDiscount] = useState('');
+  const [productRating, setProductRating] = useState(0);
 
-  // const { data, queryDoc, isLastPage } = products;
+  const { data, queryDoc, isLastPage } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart());
@@ -47,12 +51,14 @@ const Admin = (props) => {
 
   const resetForm = () => {
     setHideModal(true);
-    setProductCategory('mens');
+    setProductCategory('toys');
     setProductName('');
     setProductThumbnail('');
     setProductPrice(0);
     setProductWoP('');
     setProductDesc('');
+    setProductDiscount('');
+    setProductRating(0);
   };
 
   const handleSubmit = (e) => {
@@ -66,23 +72,25 @@ const Admin = (props) => {
         productPrice,
         productWoP,
         productDesc,
+        productDiscount,
+        productRating,
       }),
     );
     resetForm();
   };
 
-  // const handleLoadMore = () => {
-  //   dispatch(
-  //     fetchProductsStart({
-  //       startAfterDoc: queryDoc,
-  //       persistProducts: data,
-  //     }),
-  //   );
-  // };
+  const handleLoadMore = () => {
+    dispatch(
+      fetchProductsStart({
+        startAfterDoc: queryDoc,
+        persistProducts: data,
+      }),
+    );
+  };
 
-  // const configLoadMore = {
-  //   onLoadMoreEvt: handleLoadMore,
-  // };
+  const configLoadMore = {
+    onLoadMoreEvt: handleLoadMore,
+  };
 
   return (
     <div className="admin">
@@ -96,60 +104,81 @@ const Admin = (props) => {
       <Modal {...configModal}>
         <div className="addNewProductForm">
           <form onSubmit={handleSubmit}>
-            <h2>Add new product</h2>
+            <div className="tworow">
+              <h2>Add new product</h2>
 
-            <FormSelect
-              label="Category"
-              options={[
-                {
-                  value: 'toys',
-                  name: 'Toys',
-                },
-                {
-                  value: 'food',
-                  name: 'Food',
-                },
-              ]}
-              handleChange={(e) => setProductCategory(e.target.value)}
+              <FormSelect
+                label="Category"
+                options={[
+                  {
+                    value: 'toys',
+                    name: 'Toys',
+                  },
+                  {
+                    value: 'food',
+                    name: 'Food',
+                  },
+                ]}
+                handleChange={(e) => setProductCategory(e.target.value)}
+              />
+            </div>
+
+            <div className="tworow">
+              <FormInput
+                label="Name"
+                type="text"
+                value={productName}
+                handleChange={(e) => setProductName(e.target.value)}
+              />
+
+              <FormInput
+                label="Main image URL"
+                type="url"
+                value={productThumbnail}
+                handleChange={(e) => setProductThumbnail(e.target.value)}
+              />
+            </div>
+
+            <div className="tworow">
+              <FormInput
+                label="Price"
+                type="number"
+                min="0.00"
+                max="10000.00"
+                step="0.01"
+                value={productPrice}
+                handleChange={(e) => setProductPrice(e.target.value)}
+              />
+
+              <FormInput
+                label="Discount"
+                type="text"
+                value={productDiscount}
+                handleChange={(e) => setProductDiscount(e.target.value)}
+              />
+            </div>
+            <div className="tworow">
+              <FormInput
+                label="Rating"
+                type="number"
+                min="0.00"
+                max="5.00"
+                value={productRating}
+                handleChange={(e) => setProductRating(e.target.value)}
+              />
+
+              <FormInput
+                label="Weight or Piece"
+                type="text"
+                value={productWoP}
+                handleChange={(e) => setProductWoP(e.target.value)}
+              />
+            </div>
+
+            <CKEditor
+              onChange={(evt) => setProductDesc(evt.editor.getData())}
             />
-
-            <FormInput
-              label="Name"
-              type="text"
-              value={productName}
-              handleChange={(e) => setProductName(e.target.value)}
-            />
-
-            <FormInput
-              label="Main image URL"
-              type="url"
-              value={productThumbnail}
-              handleChange={(e) => setProductThumbnail(e.target.value)}
-            />
-
-            <FormInput
-              label="Price"
-              type="number"
-              min="0.00"
-              max="10000.00"
-              step="0.01"
-              handleChange={(e) => setProductPrice(e.target.value)}
-            />
-
-            <FormInput
-              label="Weight or Piece"
-              type="text"
-              value={productWoP}
-              handleChange={(e) => setProductWoP(e.target.value)}
-            />
-
-            <FormInput
-              label="Description"
-              type="text"
-              value={productDesc}
-              handleChange={(e) => setProductDesc(e.target.value)}
-            />
-
+            <br />
             <Button type="submit">Add product</Button>
           </form>
         </div>
@@ -172,9 +201,9 @@ const Admin = (props) => {
                   cellSpacing="0"
                 >
                   <tbody>
-                    {Array.isArray(products) &&
-                      products.length > 0 &&
-                      products.map((product, index) => {
+                    {Array.isArray(data) &&
+                      data.length > 0 &&
+                      data.map((product, index) => {
                         const {
                           productName,
                           productThumbnail,
@@ -213,7 +242,7 @@ const Admin = (props) => {
                 <table border="0" cellPadding="10" cellSpacing="0">
                   <tbody>
                     <tr>
-                      <td></td>
+                      <td>{!isLastPage && <LoadMore {...configLoadMore} />}</td>
                     </tr>
                   </tbody>
                 </table>
