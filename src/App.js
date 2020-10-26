@@ -26,6 +26,7 @@ import Dashboard from './pages/Dashboard/dashboard.page';
 import Admin from './pages/Admin/admin.page';
 import Search from './pages/Search/search.page';
 import ProductDetails from './pages/Product-details/product-details.page';
+import Checkout from './pages/Checkout/checkout.page';
 
 // Styles
 import './fonts.scss';
@@ -74,6 +75,14 @@ function App(props) {
           render={() => (
             <MainLayout>
               <ProductDetails />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/checkout"
+          render={() => (
+            <MainLayout>
+              <Checkout />
             </MainLayout>
           )}
         />

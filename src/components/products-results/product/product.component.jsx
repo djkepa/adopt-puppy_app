@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 //Redux
-import { addProduct } from './../../../redux/Cart/cart.actions';
+import { addItem } from './../../../redux/Cart/cart.actions';
 // Components
 import Button from './../../forms/button/button.component';
 
@@ -27,7 +27,7 @@ const Product = (product) => {
 
   const handleAddToCart = (product) => {
     if (!product) return;
-    dispatch(addProduct(product));
+    dispatch(addItem(product));
     // history.push('/cart');
   };
 

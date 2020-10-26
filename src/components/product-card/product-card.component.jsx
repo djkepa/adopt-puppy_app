@@ -7,7 +7,7 @@ import {
   fetchProductStart,
   setProduct,
 } from './../../redux/Products/products.action';
-import { addProduct } from './../../redux/Cart/cart.actions';
+import { addItem } from './../../redux/Cart/cart.actions';
 
 // Components
 import Button from './../forms/button/button.component';
@@ -37,7 +37,7 @@ const ProductCard = () => {
 
   const handleAddToCart = (product) => {
     if (!product) return;
-    dispatch(addProduct(product));
+    dispatch(addItem(product));
     // history.push('/cart');
   };
 
