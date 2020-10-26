@@ -7,6 +7,10 @@ import {
   fetchProductStart,
   setProduct,
 } from './../../redux/Products/products.action';
+import { addProduct } from './../../redux/Cart/cart.actions';
+
+// Components
+import Button from './../forms/button/button.component';
 
 // Styles
 import './product-card.styles.scss';
@@ -31,6 +35,16 @@ const ProductCard = () => {
     };
   }, []);
 
+  const handleAddToCart = (product) => {
+    if (!product) return;
+    dispatch(addProduct(product));
+    // history.push('/cart');
+  };
+
+  const configAddToCartBtn = {
+    type: 'button',
+  };
+
   return (
     <div className="productCard">
       <div className="hero">
@@ -45,7 +59,14 @@ const ProductCard = () => {
             <span>£{productPrice}</span>
           </li>
           <li>
-            <button>Add to cart</button>
+            <div className="addToCart">
+              <Button
+                {...configAddToCartBtn}
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to cart
+              </Button>
+            </div>
           </li>
           <li>
             <span

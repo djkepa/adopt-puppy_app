@@ -5,6 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Redux
 import { signOutUserStart } from './../../redux/User/user.actions';
+import {
+  selectCartItemsCount,
+  selectCartHidden,
+} from './../../redux/Cart/cart.selectors';
+
+// Components
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 // Styles
 import './header.styles.scss';
@@ -15,12 +23,14 @@ import Logo from './../../assets/logo.png';
 // Map func
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
+  totalNumCartItems: selectCartItemsCount(state),
+  hidden: selectCartHidden(state),
 });
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(mapState);
-
+  const { currentUser, totalNumCartItems, hidden } = useSelector(mapState);
+  console.log(hidden);
   const signOut = () => {
     dispatch(signOutUserStart());
   };
@@ -47,6 +57,13 @@ const Header = () => {
 
         <div className="callToActions">
           <ul>
+            <li>
+              <CartIcon />
+            </li>
+            <li>
+              <Link to="/cart">Your Cart ({totalNumCartItems})</Link>
+            </li>
+
             {currentUser && [
               <li key={1}>
                 <Link to="/dashboard">My Account</Link>
@@ -66,6 +83,7 @@ const Header = () => {
             ]}
           </ul>
         </div>
+        {hidden ? null : <CartDropdown />}
       </div>
     </header>
   );
