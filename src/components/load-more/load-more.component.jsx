@@ -1,8 +1,12 @@
 import React from 'react';
 
-import Button from './../forms/button/button.component';
+import './load-more.styles.scss';
 
 export const LoadMore = ({ onLoadMoreEvt = {} }) => {
-  return <Button onClick={() => onLoadMoreEvt()}>Load More</Button>;
+  return (
+    <buton className="btn-load" onClick={() => onLoadMoreEvt()}>
+      Load More
+    </buton>
+  );
 };
 export default LoadMore;

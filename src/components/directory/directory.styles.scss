@@ -1,51 +1,61 @@
-.directory {
-  height: 100%;
+header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('../../assets/background-header.jpg');
+  background-size: cover;
 
-  .wrap {
-    display: inline-block;
-    width: 100%;
-    height: 100%;
+  .aside {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    width: 29%;
 
-    .item {
-      position: relative;
-      width: 50%;
-      height: 50rem;
-      float: left;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
+    &-h1 {
+      font-size: 4.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.3);
-        width: 100%;
-        height: 100%;
-        z-index: 1;
+    &-p {
+      font-size: 1.6rem;
+      margin-bottom: 4rem;
+    }
+
+    &-button {
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-family: --font-primary;
+      width: 200px;
+      height: 46px;
+      background-color: --color-primary;
+      color: --color-grey-light-1;
+      border: none;
+      border-radius: 100px;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(black, 0.2);
       }
 
-      a {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -moz-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        font-size: 2rem;
-        line-height: 1;
-        font-weight: 400;
-        text-transform: uppercase;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 10px 15px;
-        border: 1px solid black;
+      &:active,
+      &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+      }
 
-        &:hover {
-          background: rgba(255, 255, 255, 1);
-        }
+      &_icon {
+        font-size: 2rem;
       }
     }
+  }
+
+  .torn {
+    background: url('../../assets/tornpaper-bottom.png');
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
   }
 }

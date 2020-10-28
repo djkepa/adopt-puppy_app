@@ -1,58 +1,75 @@
-html {
-  font-size: 62.5%;
-}
-
-html,
-body {
-  // height: 100%;
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: inherit;
 }
 
-*,
-::before,
-::after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+html {
   box-sizing: border-box;
+  font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
 }
 
 body {
   font-family: 'Filson Pro Regular', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 400;
   line-height: 1.6;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-a,
-a:hover {
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-}
-
-.App {
-  width: 100%;
-  max-width: 1450px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
-h2 {
-  display: block;
-  width: 100%;
+  margin: 0;
   padding: 0;
-  margin: 0 auto 2rem;
-  font-size: 2.5rem;
-  line-height: 2.7rem;
-  color: #000000;
-  text-align: left;
-  font-weight: 400;
-  text-transform: uppercase;
-  border-bottom: #d3d3d3;
+  // font-size: 1em;
+}
+
+/*
+// Font-Size
+$base-font-size: 1em;
+
+// Line-Height
+$base-line-height: 1.5;
+$header-line-height: 1.25;
+
+*/
+
+:root {
+  --color-primary-light: #eca39b;
+  --color-primary-dark: #b93537;
+  --color-primary-darkest: #981020;
+  --color-primary: #da5350;
+
+  --color-secondary-light: #d69f5c;
+  --color-secondary: #663625;
+  --color-secondary-brown: #b86d32;
+
+  --color-vanilla2: #fdd7be;
+
+  --color-vanilla: #ffe4de;
+
+  --color-grey-light-1: #faf9f9;
+  --color-grey-light-2: #f4f2f2;
+  --color-grey-light-3: #f0eeee;
+  --color-grey-light-4: #ccc;
+
+  --color-grey-dark-1: #333;
+  --color-grey-dark-2: #777;
+  --color-grey-dark-3: #999;
+
+  --color-grey-dark-1: #54483a;
+  --color-grey-dark-2: #6d5d4b;
+
+  // FONT VARIABLES
+  --font-primary: 'Filson Pro Regular', sans-serif;
+
+  // Breakpoints
+  --bp-small: 48em; // 768px
+  --bp-medium: 64em; // 1024px
+  --bp-large: 85.375em; // 1366px
+  --bp-xlarge: 120em; // 1920px
+  --bp-xxlarge: 160em; // 2560px
+
+  // Media Queries
+  --mq-small: '(min-width: #{--bp-small})';
+  --mq-medium: '(min-width: #{--bp-medium})';
+  --mq-large: '(min-width: #{--bp-large})';
+  --mq-xlarge: '(min-width: #{--bp-xlarge})';
+  --mq-xxlarge: '(min-width: #{--bp-xxlarge})';
+  --mq-retina: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
 }

@@ -1,0 +1,22 @@
+.btn-load {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 400;
+  color: #da5350;
+  background: white;
+  padding: 1.5rem 3rem;
+  border: 2px solid #da5350;
+  outline: none;
+  cursor: pointer;
+  border-radius: 36px;
+  line-height: 1;
+  font-family: 'Filson Pro Regular';
+
+  &:hover {
+    color: white;
+    background: #da5350;
+    border: 2px solid white;
+  }
+}

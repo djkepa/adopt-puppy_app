@@ -1,0 +1,62 @@
+.section-2 {
+  background: url(../../../assets/smiling-puppy.jpg);
+  background-size: cover;
+  position: relative;
+  height: 50rem;
+
+  &-block {
+    width: 45rem;
+    position: absolute;
+    top: 10rem;
+    left: 20rem;
+
+    z-index: 200;
+    &--h1 {
+      color: #faf9f9;
+      font-size: 4.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      line-height: 6rem;
+    }
+
+    &--p {
+      color: #faf9f9;
+      font-size: 1.35rem;
+      margin-bottom: 3.5rem;
+    }
+
+    &--button {
+      cursor: pointer;
+      font-size: 1.3rem;
+      font-family: 'Filson Pro Regular', sans-serif;
+      width: 200px;
+      height: 46px;
+      background-color: #da5350;
+      color: #faf9f9;
+      border: none;
+      border-radius: 100px;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(black, 0.2);
+      }
+
+      &:active,
+      &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+      }
+
+      &_icon {
+        padding-left: 1rem;
+        font-size: 2rem;
+        transition: transform 0.5s ease;
+
+        &:hover {
+          transform: translateX(100px);
+        }
+      }
+    }
+  }
+}

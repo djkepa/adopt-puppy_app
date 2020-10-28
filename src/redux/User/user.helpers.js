@@ -1,5 +1,9 @@
 import { auth } from './../../firebase/utils';
 
+// const user = auth.currentUser;
+
+// user.updatePassword
+
 export const handleResetPasswordAPI = (email) => {
   const config = {
     url: 'http://localhost:3000/login',

@@ -1,0 +1,46 @@
+.section-term {
+  background-color: #da5350;
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-text {
+    display: flex;
+    align-items: center;
+    &-0 {
+      font-size: 1.7rem;
+      color: white;
+      padding-right: 1.5rem;
+    }
+
+    &-1 {
+      font-size: 2rem;
+      text-decoration: underline;
+      &:link,
+      &:visited {
+        color: #faf9f9;
+        background-color: #da5350;
+        text-decoration: underline;
+
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+
+      &:hover,
+      &:active {
+        color: #663625;
+        box-shadow: 0 1rem 2rem rgba(black, 0.4);
+        transform: rotate(5deg) scale(1.3);
+
+        -webkit-transform: rotate(5deg) scale(1.2);
+        -moz-transform: rotate(5deg) scale(1.2);
+        -o-transform: rotate(5deg) scale(1.2);
+        -ms-transform: rotate(5deg) scale(1.2);
+      }
+    }
+  }
+}

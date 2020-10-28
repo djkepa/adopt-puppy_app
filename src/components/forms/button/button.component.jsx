@@ -5,7 +5,7 @@ import './button.styles.scss';
 
 export const Button = ({ children, ...otherProps }) => {
   return (
-    <button className="btn" {...otherProps}>
+    <button className="btn btn-white btn-animation-1" {...otherProps}>
       {children}
     </button>
   );

@@ -4,9 +4,9 @@ import ProductResults from './../../components/products-results/product-results.
 
 export const Search = () => {
   return (
-    <div>
+    <>
       <ProductResults />
-    </div>
+    </>
   );
 };
 

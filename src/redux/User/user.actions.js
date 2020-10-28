@@ -49,3 +49,16 @@ export const resetUserState = () => ({
 export const googleSignInStart = () => ({
   type: userTypes.GOOGLE_SIGN_IN_START,
 });
+
+export const editUserStart = () => ({
+  type: userTypes.EDIT_USER_START,
+});
+
+export const editUserSuccess = () => ({
+  type: userTypes.EDIT_USER_SUCCESS,
+});
+
+export const editUserError = (err) => ({
+  type: userTypes.EDIT_USER_ERROR,
+  payload: err,
+});

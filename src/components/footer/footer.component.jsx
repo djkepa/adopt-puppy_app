@@ -6,7 +6,9 @@ import './footer.styles.scss';
 const Footer = (props) => {
   return (
     <footer className="footer">
-      <div className="wrap">© Adopt Puppy 2020</div>
+      <div className="shop-headerimage" alt="bgimage">
+        <h2 className="shop-headerimage-text">© Adopt Puppy 2020</h2>
+      </div>
     </footer>
   );
 };
