@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 
+import { ReactComponent as Facebook } from '../../assets/facebook.svg';
+import { ReactComponent as GooglePlus } from '../../assets/google-plus.svg';
+import { ReactComponent as Twitter } from '../../assets/twitter.svg';
+
 // Redux
 import {
   emailSignInStart,
@@ -53,35 +57,47 @@ const SignIn = (props) => {
     headline: 'LogIn',
   };
   return (
-    <AuthWrapper {...configAuthWrapper}>
+    <AuthWrapper className="overlow" {...configAuthWrapper}>
       <div className="formWrap">
         <form onSubmit={handleSubmit}>
           <FormInput
             type="email"
             name="email"
             value={email}
-            placeholder="Email"
+            label="Your email"
             handleChange={(e) => setEmail(e.target.value)}
+            required
           />
 
           <FormInput
             type="password"
             name="password"
             value={password}
-            placeholder="Password"
+            label="Your password"
             handleChange={(e) => setPassword(e.target.value)}
+            required
           />
-
-          <Button type="submit">LogIn</Button>
-
-          <div className="socialSignin">
-            <div className="row">
-              <Button onClick={handleGoogleSignIn}>Sign in with Google</Button>
-            </div>
+          <div className="links">
+            <Link to="/recovery">Forgot Password?</Link>
           </div>
 
-          <div className="links">
-            <Link to="/recovery">Reset Password</Link>
+          <button className="login-btn" type="submit">
+            Login
+          </button>
+          <div className="dwn-label">or Log in with:</div>
+          <div className="socialSignin">
+            <div className="row">
+              <button className="social-btn">
+                <Facebook className="social-icons" />
+              </button>
+
+              <button className="social-btn" onClick={handleGoogleSignIn}>
+                <GooglePlus className="social-icons" />
+              </button>
+              <button className="social-btn">
+                <Twitter className="social-icons" />
+              </button>
+            </div>
           </div>
         </form>
       </div>

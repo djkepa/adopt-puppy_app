@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -7,11 +7,15 @@ import { useDispatch } from 'react-redux';
 import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 
+// Hooks
+// import useWindowSize from './customHooks/useWindowSize';
+
 // Redux
 import { checkUserSession } from './redux/User/user.actions';
 
 // Components
 import AdminToolbar from './components/admin-toolbar/admin-toolbar.component';
+import BlogItem from './components/blog-item/blog-item.component';
 
 // Layouts
 import MainLayout from './layouts/MainLayout';
@@ -121,6 +125,17 @@ function App(props) {
               </DashboardLayout>
             </WithAuth>
           )}
+        />
+        <Route
+          path="/blog"
+          children={
+            <WithAdminAuth>
+              <BlogItem />
+            </WithAdminAuth>
+          }
+          // render={() => (
+
+          // )}
         />
         <Route
           path="/admin"

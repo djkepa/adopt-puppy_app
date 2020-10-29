@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 // Redux
 import { signUpUserStart } from './../../redux/User/user.actions';
@@ -81,7 +81,7 @@ const Signup = (props) => {
             type="text"
             name="displayName"
             value={displayName}
-            placeholder="Full name"
+            label="Full name"
             handleChange={(e) => setDisplayName(e.target.value)}
           />
 
@@ -89,7 +89,7 @@ const Signup = (props) => {
             type="email"
             name="email"
             value={email}
-            placeholder="Email"
+            label="Email"
             handleChange={(e) => setEmail(e.target.value)}
           />
 
@@ -97,7 +97,7 @@ const Signup = (props) => {
             type="password"
             name="password"
             value={password}
-            placeholder="Password"
+            label="Password"
             handleChange={(e) => setPassword(e.target.value)}
           />
 
@@ -105,11 +105,19 @@ const Signup = (props) => {
             type="password"
             name="confirmPassword"
             value={confirmPassword}
-            placeholder="Confirm Password"
+            label="Confirm Password"
             handleChange={(e) => setConfirmPassword(e.target.value)}
           />
+          <div className="signup-btn">
+            <Button type="submit">Register</Button>
 
-          <Button type="submit">Register</Button>
+            <div className="signup-btn-text">
+              Have an account?{' '}
+              <Link className="signup-btn-text-link" to="/login">
+                Log in
+              </Link>
+            </div>
+          </div>
         </form>
       </div>
     </AuthWrapper>

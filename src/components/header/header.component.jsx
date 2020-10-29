@@ -22,6 +22,11 @@ import Logo from './../../assets/logo.png';
 import { ReactComponent as RotateArrow } from './../../assets/rotatearrow.svg';
 import { ReactComponent as Profile } from './../../assets/profile.svg';
 
+import { ReactComponent as Facebook } from './../../assets/facebook.svg';
+import { ReactComponent as Twitter } from './../../assets/twitter.svg';
+import { ReactComponent as Instagram } from './../../assets/instagram.svg';
+import { ReactComponent as Youtube } from './../../assets/youtube.svg';
+
 // Map func
 const mapState = (state) => ({
   currentUser: state.user.currentUser,
@@ -53,6 +58,19 @@ const Header = () => {
   const menu2 = active ? null : 'show-menu';
   return (
     <>
+      <div className="social">
+        <p className="social-text">
+          Adopt Pet - For the millennial animal lover and premium product
+          connoisseur!
+        </p>
+        <div className="social-right">
+          <p className="social-text">Folow Adopt Pet on</p>
+          <Facebook className="social-icon" />
+          <Twitter className="social-icon" />
+          <Instagram className="social-icon" />
+          <Youtube className="social-icon" />
+        </div>
+      </div>
       <div className="navbar" id="navbar">
         <div className="navbar-logo">
           <Link to="/">
@@ -62,7 +80,7 @@ const Header = () => {
         <div className="navbar-routes">
           <ul className="navbar-routes--list">
             <li>
-              <Link to="/" onClick={() => setCondition(!condition)}>
+              <Link onClick={() => setCondition(!condition)}>
                 Dog
                 <RotateArrow className={condition ? 'rotate' : 'rotate2'} />
               </Link>
@@ -101,17 +119,26 @@ const Header = () => {
               >
                 <li className="profile-box-dropmenu-item">Account info </li>
                 <li className="profile-box-dropmenu-item">Setting</li>
-                <li className="profile-box-dropmenu-item">Sign out</li>
+                <li
+                  className="profile-box-dropmenu-item"
+                  onClick={() => signOut()}
+                >
+                  Sign out
+                </li>
               </ul>
             </div>,
           ]}
 
           {!currentUser && [
             <div key={1}>
-              <Link to="/registration">Sign Up</Link>
+              <Link to="/registration" className="navbar-router-buttons">
+                Sign Up
+              </Link>
             </div>,
             <div key={2}>
-              <Link to="/login">Log in</Link>
+              <Link to="/login" className="navbar-router-buttons">
+                Log in
+              </Link>
             </div>,
           ]}
         </div>
@@ -152,5 +179,5 @@ Header.defaultProps = {
 
 export default Header;
 {
-  /* <span onClick={() => signOut()}>Sign out</span> */
+  /* <span >Sign out</span> */
 }

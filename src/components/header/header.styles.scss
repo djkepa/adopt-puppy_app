@@ -45,7 +45,7 @@
         }
 
         a {
-          font-size: 1.5rem;
+          font-size: 2rem;
           position: relative;
           text-decoration: none;
           color: #150808;
@@ -54,6 +54,10 @@
           transition: 0.5s;
         }
       }
+    }
+
+    &-buttons {
+      font-size: 1.5rem;
     }
   }
 
@@ -137,7 +141,8 @@
   }
 
   &-name {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: #232b2b;
   }
 
   &-dropmenu {
@@ -243,4 +248,36 @@
   width: 1.1rem;
   // transform: rotate(180deg);
   // -webkit-transform: rotate(180deg);
+}
+
+.social {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 3.2rem;
+  background-color: #d69f5c;
+  color: white;
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+  &-text {
+    font-size: 1.2rem;
+  }
+
+  &-icon {
+    cursor: pointer;
+    margin-left: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: white;
+  }
+}
+
+.navbar-router-buttons {
+  font-size: 2rem;
+  text-decoration: none;
+  color: #232b2b;
+  margin-right: 2rem;
 }
