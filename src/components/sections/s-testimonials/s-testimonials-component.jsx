@@ -14,7 +14,7 @@ export const STestimonials = () => {
         <div className="section-testimonials-left">
           <div className="section-testimonials-left-block">
             <h4 className="section-testimonials-left-block--h4">
-              --- Testimonials
+              &#x268A; Testimonials
             </h4>
             <h1 className="section-testimonials-left-block--h1">
               What our clients are saying?

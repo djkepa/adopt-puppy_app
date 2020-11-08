@@ -9,7 +9,9 @@ export const SAdoption = () => {
       <div className="section-adoption" id="about">
         <div className="section-adoption-top">
           <div className="section-adoption-top-block">
-            <h4 className="section-adoption-top-block-h4">--- How we work</h4>
+            <h4 className="section-adoption-top-block-h4">
+              &#x268A; How we work
+            </h4>
             <h2 className="section-adoption-top-block-h2">
               Pet adoption process
             </h2>

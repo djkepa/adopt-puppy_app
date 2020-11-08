@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { Loader } from 'semantic-ui-react';
 
 import { ReactComponent as Facebook } from '../../assets/facebook.svg';
 import { ReactComponent as GooglePlus } from '../../assets/google-plus.svg';
@@ -13,7 +14,6 @@ import {
 } from './../../redux/User/user.actions';
 
 // Components
-import Button from './../forms/button/button.component';
 import AuthWrapper from './../auth-wrapper/auth-wrapper.component';
 import FormInput from './../forms/form-input/form-input.component';
 
@@ -23,12 +23,13 @@ import './sign-in.styles.scss';
 // Initial selector
 const mapState = ({ user }) => ({
   currentUser: user.currentUser,
+  isLoading: user.loading,
 });
 
 const SignIn = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { currentUser } = useSelector(mapState);
+  const { currentUser, isLoading } = useSelector(mapState);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -37,6 +38,7 @@ const SignIn = (props) => {
       resetForm();
       history.push('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   const resetForm = () => {
@@ -56,6 +58,8 @@ const SignIn = (props) => {
   const configAuthWrapper = {
     headline: 'LogIn',
   };
+  console.log(isLoading);
+
   return (
     <AuthWrapper className="overlow" {...configAuthWrapper}>
       <div className="formWrap">
@@ -80,7 +84,7 @@ const SignIn = (props) => {
           <div className="links">
             <Link to="/recovery">Forgot Password?</Link>
           </div>
-
+          {isLoading && <Loader active inline />}
           <button className="login-btn" type="submit">
             Login
           </button>

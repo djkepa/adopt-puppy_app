@@ -22,6 +22,8 @@
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    transition: 'all .5s ease';
+    box-shadow: '0 5px 10px rgba(0, 0, 0, .1)';
     background-color: white;
     width: 95%;
     padding: 2rem;

@@ -1,6 +1,6 @@
 // Libraries
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Redux
@@ -36,15 +36,11 @@ const mapState = (state) => ({
 
 const Header = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { currentUser, hidden } = useSelector(mapState);
   const [isActive, setActive] = useState('false');
   const [condition, setCondition] = useState(true);
   const [condition2, setCondition2] = useState(true);
-
-  const [prva, setPrva] = useState(true);
-
-  const active = 'active';
-  const deactive = 'deactive';
 
   const handleToggle = () => {
     if (true) setActive(!isActive);
@@ -54,8 +50,10 @@ const Header = () => {
     dispatch(signOutUserStart());
   };
 
-  const menu = active ? null : 'active';
-  const menu2 = active ? null : 'show-menu';
+  // if (hidden) {
+  //   setCondition2(false);
+  // }
+
   return (
     <>
       <div className="social">
@@ -80,13 +78,17 @@ const Header = () => {
         <div className="navbar-routes">
           <ul className="navbar-routes--list">
             <li>
-              <Link onClick={() => setCondition(!condition)}>
+              <div
+                className="navbar-routes--primary"
+                onClick={() => setCondition(!condition)}
+              >
                 Dog
                 <RotateArrow className={condition ? 'rotate' : 'rotate2'} />
-              </Link>
+              </div>
             </li>
+
             <li>
-              <Link to="/search">Shop</Link>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
               <Link to="/blog">Blog</Link>
@@ -107,7 +109,7 @@ const Header = () => {
               >
                 <Profile className="profile-box-icon" />
                 <div className="profile-box-name" onClick={handleToggle}>
-                  Bane Grozdanovic
+                  {currentUser.displayName}
                 </div>
               </div>
               <ul
@@ -117,8 +119,13 @@ const Header = () => {
                     : 'profile-box-dropmenu dropmenu-open'
                 }
               >
-                <li className="profile-box-dropmenu-item">Account info </li>
-                <li className="profile-box-dropmenu-item">Setting</li>
+                <li
+                  onClick={() => history.push('/account')}
+                  className="profile-box-dropmenu-item"
+                >
+                  Account info
+                </li>
+
                 <li
                   className="profile-box-dropmenu-item"
                   onClick={() => signOut()}
@@ -153,7 +160,9 @@ const Header = () => {
             <Link to="/">Adopt</Link>
           </li>
           <li className="bottombar-list-li">
-            <Link to="/">Activity</Link>
+            <Link className="bottombar-list-li-box" to="/">
+              Training{' '}
+            </Link>
           </li>
           <li className="bottombar-list-li">
             <Link to="/">Nutration</Link>
@@ -162,7 +171,7 @@ const Header = () => {
             <Link to="/">Vegetenary</Link>
           </li>
           <li className="bottombar-list-li">
-            <Link to="/">Resques</Link>
+            <Link to="/">Grooming</Link>
           </li>
           <li className="bottombar-list-li">
             <Link to="/">Emergency</Link>
@@ -178,6 +187,3 @@ Header.defaultProps = {
 };
 
 export default Header;
-{
-  /* <span >Sign out</span> */
-}

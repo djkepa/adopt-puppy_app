@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Styles
 import './s-term.styles.scss';
@@ -9,9 +10,9 @@ export const STerm = () => {
       <div className="section-term">
         <div className="section-term-text">
           <p className="section-term-text-0">Check our →</p>
-          <a href="#" className="section-term-text-1">
+          <Link to="/" className="section-term-text-1">
             Terms of Adoption.
-          </a>
+          </Link>
         </div>
       </div>
     </>

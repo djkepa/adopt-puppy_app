@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 //Redux
 import { addItem } from './../../redux/Cart/cart.actions';
+
 // Components
 import Button from './../forms/button/button.component';
 import StarRating from './../star-rating/star-rating.component';
@@ -17,14 +18,12 @@ import './product-item.styles.scss';
 const ProductItem = (product) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const [rating, setRating] = useState(4);
   const {
     documentID,
     productThumbnail,
     productName,
     productPrice,
     productWoP,
-    // productDesc,
     productDiscount,
     productRating,
   } = product;
@@ -38,6 +37,10 @@ const ProductItem = (product) => {
 
   const configAddToCartBtn = {
     type: 'button',
+  };
+
+  const handleHistoryClick = () => {
+    history.push(`/product/${documentID}`);
   };
 
   const handleAddToCart = (product) => {
@@ -54,13 +57,13 @@ const ProductItem = (product) => {
             alt={productName}
             className="shop-container-left-mid-block-item-image"
           />
-          <div className="shop-container-left-mid-block-item-link">
-            <Link
-              to={`/product/${documentID}`}
-              className="shop-container-left-mid-block-item-link-c"
-            >
+          <div
+            className="shop-container-left-mid-block-item-link"
+            onClick={handleHistoryClick}
+          >
+            <div className="shop-container-left-mid-block-item-link-c">
               See product →
-            </Link>
+            </div>
           </div>
         </div>
 

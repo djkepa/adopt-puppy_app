@@ -9,6 +9,9 @@ import {
   selectCartTotal,
 } from '../../redux/Cart/cart.selectors';
 
+// Custom hooks
+import useScrollTop from '../../customHooks/useScrollTop';
+
 // Components
 import Button from '../../components/forms/button/button.component';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component.jsx';
@@ -21,9 +24,10 @@ const mapState = createStructuredSelector({
   total: selectCartTotal,
 });
 
-const Checkout = ({}) => {
+const Checkout = () => {
   const history = useHistory();
   const { cartItems, total } = useSelector(mapState);
+  useScrollTop();
 
   const errMsg = 'You have no items in your cart.';
 

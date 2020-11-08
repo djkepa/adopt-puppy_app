@@ -1,0 +1,113 @@
+.dropdown {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: rgb(243, 243, 243);
+  border-color: #ffffff #f7f7f7 #f5f5f5;
+  border-image: none;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  display: inline-block;
+  height: 35px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  outline: none;
+}
+.dropdown:before,
+.dropdown:after {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #ff9393 rgba(0, 0, 0, 0);
+  border-image: none;
+  border-style: dashed;
+  border-width: 4px;
+  content: '';
+  height: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  width: 0;
+  z-index: 2;
+  outline: none;
+}
+.dropdown:before {
+  border-bottom-style: solid;
+  border-top: medium none;
+}
+.dropdown:after {
+  border-bottom: medium none;
+  border-top-style: solid;
+  margin-top: 7px;
+}
+.dropdown-select {
+  background: rgb(243, 243, 243);
+  border: 0 none;
+  border-radius: 0;
+  color: #161616;
+  font-size: 12px;
+  height: 35px;
+  line-height: 14px;
+  margin: 0;
+  padding: 6px 8px 6px 10px;
+  position: relative;
+  text-shadow: 0 1px #ffffff;
+  outline: none;
+  width: 130%;
+}
+.dropdown-select:focus {
+  color: #2c2c2c;
+  // outline: 2px solid #da5350;
+  outline-offset: -2px;
+  width: 100%;
+  z-index: 3;
+}
+.dropdown-select > option {
+  background: none repeat scroll 0 0 #f2f2f2;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 3px;
+  padding: 6px 8px;
+  text-shadow: none;
+}
+
+.filterAction {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 400;
+  color: #da5350;
+  padding: 1rem 2.5rem;
+  border: 2px solid #da5350;
+  border-radius: 36px;
+  line-height: 1;
+  font-family: 'Filson Pro Regular';
+  transition: 0.2s ease;
+
+  &:hover {
+    border: 2px solid #da5350;
+    background-color: #da5350;
+    color: white;
+    transform: translateY(-2px);
+  }
+}
+
+.filters-title {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}

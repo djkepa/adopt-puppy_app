@@ -1,5 +1,10 @@
 import userTypes from './user.types';
 
+export const setLoading = (bool = true) => ({
+  type: userTypes.LOADING,
+  payload: bool,
+});
+
 export const emailSignInStart = (userCredentials) => ({
   type: userTypes.EMAIL_SIGN_IN_START,
   payload: userCredentials,
@@ -50,15 +55,33 @@ export const googleSignInStart = () => ({
   type: userTypes.GOOGLE_SIGN_IN_START,
 });
 
-export const editUserStart = () => ({
-  type: userTypes.EDIT_USER_START,
+export const clearProfile = () => ({
+  type: userTypes.CLEAR_PROFILE,
 });
 
-export const editUserSuccess = () => ({
-  type: userTypes.EDIT_USER_SUCCESS,
+export const setProfile = (user) => ({
+  type: userTypes.SET_PROFILE,
+  payload: user,
 });
 
-export const editUserError = (err) => ({
-  type: userTypes.EDIT_USER_ERROR,
-  payload: err,
+export const updateEmail = (password, newEmail) => ({
+  type: userTypes.UPDATE_EMAIL,
+  payload: {
+    password,
+    newEmail,
+  },
+});
+
+export const updateProfile = (newProfile) => ({
+  type: userTypes.UPDATE_PROFILE,
+  payload: {
+    updates: newProfile.updates,
+    files: newProfile.files,
+    credentials: newProfile.credentials,
+  },
+});
+
+export const updateProfileSuccess = (updates) => ({
+  type: userTypes.UPDATE_PROFILE_SUCCESS,
+  payload: updates,
 });

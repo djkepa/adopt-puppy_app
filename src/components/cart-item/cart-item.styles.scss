@@ -1,23 +1,24 @@
 .cart-item {
   width: 100%;
   display: flex;
-  height: 80px;
+  height: 62px;
   margin-bottom: 15px;
+  border: 1px solid #f4f2f2;
 
   img {
-    width: 30%;
+    width: 22%;
   }
 
   .item-details {
     width: 70%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 10px 20px;
+    justify-content: space-between;
+    padding: 0 10px;
 
     .name {
-      font-size: 16px;
+      font-size: 12px;
+      color: black;
     }
   }
 }
@@ -44,4 +45,55 @@
 .remove-button {
   padding-left: 12px;
   cursor: pointer;
+  font-size: 1.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.conArr {
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 2px;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.priceCont {
+  display: flex;
+  align-items: center;
+  margin: 0 0.5rem;
+
+  &-value {
+    font-size: 1.2rem;
+    // border: 1px solid black;
+    background-color: #da5350;
+    border-radius: 20px;
+    padding: 0.8rem;
+    line-height: 0.6rem;
+    color: white;
+  }
+}
+
+.arrow {
+  fill: rgb(100, 100, 100);
+  width: 1rem;
+  height: 1rem;
+}
+
+.price {
+  font-size: 1.35rem;
+}
+
+.name {
+  font-size: 0.6rem;
 }

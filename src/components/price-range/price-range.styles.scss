@@ -1,0 +1,58 @@
+.price-range {
+  width: 100%;
+  position: relative;
+  // box-shadow: inset 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+.price-range-control {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.price-range-slider {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+
+  &:nth-child(1):hover {
+    background: red;
+  }
+}
+
+.price-range-input {
+  width: 50%;
+  border: none !important;
+  font-size: 2rem !important;
+  padding: 0 !important;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.price-input-error {
+  color: red !important;
+  background: transparentize(red, 0.9);
+}
+
+.price-range-scale {
+  display: flex;
+  padding: 1.6rem 0;
+}
+
+.price-range-price {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.price-range-price:nth-child(1) {
+  flex-grow: 1;
+}
+
+.price-range-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}

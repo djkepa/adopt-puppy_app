@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   currentUser: null,
   resetPasswordSuccess: false,
   userErr: [],
+  loading: false,
   editUser: {
     error: null,
     loading: false,
@@ -12,6 +13,11 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case userTypes.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      };
     case userTypes.SIGN_IN_SUCCESS:
       return {
         ...state,
@@ -38,26 +44,10 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...INITIAL_STATE,
       };
 
-    case userTypes.EDIT_USER_START:
+    case userTypes.UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
-        editUser: { ...state.editUser, loading: true },
-      };
-
-    case userTypes.EDIT_USER_SUCCESS:
-      return {
-        ...state,
-        editUser: { ...state.editUser, loading: false, error: false },
-      };
-
-    case userTypes.EDIT_USER_ERROR:
-      return {
-        ...state,
-        editUser: {
-          ...state.editUser,
-          loading: false,
-          error: action.payload,
-        },
+        currentUser: { ...state.currentUser, ...action.payload },
       };
 
     case userTypes.CLEAN_UP:

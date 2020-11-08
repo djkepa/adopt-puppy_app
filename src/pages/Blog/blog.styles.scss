@@ -1,0 +1,76 @@
+.img-blog {
+  background-image: linear-gradient(
+      0deg,
+      rgba(102, 54, 37, 0.8) 0%,
+      rgba(184, 109, 50, 0.8) 77%
+    ),
+    url('../../assets/bg-blog.jpg');
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 25rem;
+  background-color: cornflowerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+
+  span {
+    font-size: 1.7rem;
+    line-height: 2rem;
+  }
+  h2 {
+    font-weight: 900;
+    line-height: 9rem;
+
+    font-size: 7rem;
+  }
+  p {
+    font-size: 1.3rem;
+    width: 80rem;
+  }
+}
+
+.blog-container {
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+
+  &-create {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+    transition: all 0.2s ease-in-out;
+
+    span {
+      font-size: 1.2rem;
+    }
+  }
+
+  &-content {
+    background-color: rgb(233, 233, 233);
+    width: 100%;
+    justify-content: center;
+    padding: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-evenly;
+  }
+
+  &-button {
+    height: 4rem;
+    width: 4rem;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

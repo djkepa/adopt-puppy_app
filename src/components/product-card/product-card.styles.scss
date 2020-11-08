@@ -1,22 +1,20 @@
 .product {
-  padding: 5rem;
-  width: 120rem;
-  &-headerimage {
-    position: relative;
-    background: url('../../assets/dogbg6.jpg'),
-      linear-gradient(
-        0deg,
-        rgba(102, 54, 37, 0.5) 0%,
-        rgba(214, 159, 92, 0.9) 100%
-      );
-    width: 100%;
-    height: 35rem;
-    background-size: cover;
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+
+  &-arrow {
+    width: 2rem;
+    height: 2rem;
   }
 
   &-item {
-    width: 115rem;
-    padding: 14rem;
+    width: 100rem;
+    border: 1px solid rgb(226, 226, 226);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 4rem;
 
     &-top {
       display: flex;
@@ -235,4 +233,21 @@
 .item {
   display: flex;
   justify-content: center;
+}
+
+.arrowBox {
+  cursor: pointer;
+  width: 5rem;
+  height: 4rem;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(226, 226, 226);
+
+  &:hover {
+    background-color: #f0eeee;
+  }
 }

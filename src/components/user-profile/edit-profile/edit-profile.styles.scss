@@ -1,0 +1,19 @@
+.edit-profile {
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+
+  &-header {
+    font-size: 2rem;
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  &-buttons {
+    display: flex;
+    padding: 1rem;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import VanillaTilt from 'vanilla-tilt';
 
 // Icons
 import { ReactComponent as DogTraining } from './../../../assets/dogtraining.svg';
@@ -12,13 +13,34 @@ import { ReactComponent as Reports } from './../../../assets/veterinary-4.svg';
 // Styles
 import './s-services.styles.scss';
 
-export const SServices = () => {
+function Tilt({ children }) {
+  const tiltRef = React.useRef();
+  React.useEffect(() => {
+    const { current: tiltNode } = tiltRef;
+    const vanillaTiltOptions = {
+      max: 5,
+      speed: 400,
+      glare: true,
+      'max-glare': 0.1,
+    };
+    VanillaTilt.init(tiltNode, vanillaTiltOptions);
+    return () => tiltNode.vanillaTilt.destroy();
+  }, []);
+
+  return (
+    <div ref={tiltRef} className="tilt-root">
+      <div className="tilt-child">{children}</div>
+    </div>
+  );
+}
+
+const SServices = () => {
   return (
     <>
       <div className="section-services">
         <div className="section-services-top">
           <div className="section-services-top-block">
-            <h4 className="section-services-top-block-h4">--- Services</h4>
+            <h4 className="section-services-top-block-h4">&#x268A; Services</h4>
             <h2 className="section-services-top-block-h2">
               We take care of all our pets
             </h2>
@@ -45,7 +67,9 @@ export const SServices = () => {
               <PetFood className="section-services-bottom-lblock-3-icon3" />
             </div>
           </div>
-          <div className="section-services-bottom-image"></div>
+          <Tilt>
+            <div className="section-services-bottom-image"></div>
+          </Tilt>
 
           <div className="section-services-bottom-rblock">
             <div className="section-services-bottom-rblock-1">

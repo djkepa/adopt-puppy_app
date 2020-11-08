@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -23,7 +22,7 @@ export const SAvailable = () => {
       <div className="section-available">
         <div className="section-available-header">
           <h4 className="section-available-header-h4">
-            --- Adoption Available
+            &#x268A; Adoption Available
           </h4>
           <h1 className="section-available-header-h1">
             Puppies available for adoption

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CKEditor from 'ckeditor4-react';
 
@@ -16,7 +15,6 @@ import FormInput from './../../components/forms/form-input/form-input.component'
 import FormSelect from './../../components/forms/form-select/form-select.component';
 import Button from './../../components/forms/button/button.component';
 import LoadMore from './../../components/load-more/load-more.component';
-import BlogItem from './../../components/blog-item/blog-item.component';
 
 // Styles
 import './admin.styles.scss';
@@ -44,6 +42,7 @@ const Admin = (props) => {
 
   useEffect(() => {
     dispatch(fetchProductsStart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleModal = () => setHideModal(!hideModal);
@@ -112,8 +111,6 @@ const Admin = (props) => {
           </li>
         </ul>
       </div>
-
-      <BlogItem opened={modalOpened} close={() => setModalOpened(false)} />
 
       <Modal {...configModal}>
         <div className="addNewProductForm">
@@ -228,7 +225,11 @@ const Admin = (props) => {
                         return (
                           <tr key={index}>
                             <td>
-                              <img className="thumb" src={productThumbnail} />
+                              <img
+                                alt={productName}
+                                className="thumb"
+                                src={productThumbnail}
+                              />
                             </td>
                             <td>{productName}</td>
                             <td>£{productPrice}</td>

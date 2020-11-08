@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 //Redux
@@ -11,7 +11,6 @@ import Button from './../../forms/button/button.component';
 import './../product-results.styles.scss';
 const Product = (product) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { documentID, productThumbnail, productName, productPrice } = product;
   if (
     !documentID ||

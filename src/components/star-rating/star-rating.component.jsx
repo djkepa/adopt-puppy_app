@@ -4,7 +4,7 @@ const StarRating = ({
   count,
   value,
   inactiveColor = '#ddd',
-  size = 24,
+  size = 20,
   activeColor = '#e9ba10',
   onChange,
 }) => {
@@ -12,6 +12,7 @@ const StarRating = ({
   const stars = Array.from({ length: count }, () => '🟊');
 
   // Internal handle change function
+  // eslint-disable-next-line no-unused-vars
   const handleChange = (value) => {
     onChange(value + 1);
   };
@@ -27,8 +28,14 @@ const StarRating = ({
           <span
             className={'star'}
             key={index}
-            style={{ color: style, width: size, height: size, fontSize: size }}
-            onClick={() => handleChange(index)}
+            style={{
+              color: style,
+              width: size,
+              height: '0',
+              lineHeight: '1.6rem',
+              fontSize: '26px',
+            }}
+            // onClick={() => handleChange(index)}
           >
             {s}
           </span>

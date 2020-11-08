@@ -10,6 +10,7 @@ export const handleAddCartItem = ({ prevCartItems, nextCartItem }) => {
 
   if (cartItemExists) {
     return prevCartItems.map((cartItem) =>
+      // eslint-disable-next-line eqeqeq
       cartItem.documentID == nextCartItem.documentID
         ? {
             ...cartItem,

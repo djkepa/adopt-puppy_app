@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import Carousel, {
-  slidesToShowPlugin,
-  arrowsPlugin,
-} from '@brainhubeu/react-carousel';
+import Carousel, { arrowsPlugin } from '@brainhubeu/react-carousel';
 import '@brainhubeu/react-carousel/lib/style.css';
+
 // Components
 import ProductItem from './../../product-item/product-item.component';
 
@@ -30,15 +28,16 @@ const SShop = () => {
   const history = useHistory();
   const { filterType } = useParams();
   const { products } = useSelector(mapState);
-  const { data, queryDoc } = products;
+  const { data } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterType]);
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/search/${nextFilter}`);
+    history.push(`/shop/${nextFilter}`);
   };
 
   if (!Array.isArray(data)) return null;
@@ -49,8 +48,8 @@ const SShop = () => {
       </div>
     );
   }
-  console.log(data);
 
+  // eslint-disable-next-line no-unused-vars
   const configFilters = {
     defaultValue: filterType,
     options: [
@@ -73,16 +72,20 @@ const SShop = () => {
     <div className="section-shop">
       <div className="section-shop-top">
         <div className="section-shop-top-block">
-          <h4 className="section-shop-top-block-h4">--- Our Shop</h4>
+          <h4 className="section-shop-top-block-h4">&#x268A; Our Shop</h4>
           <h1 className="section-shop-top-block-h1">
             Our awesome food and nutrients
           </h1>
 
-          <h3 className="section-shop-top-block-h3">See all products →</h3>
+          <h3
+            onClick={() => history.push('/shop')}
+            className="section-shop-top-block-h3"
+          >
+            See all products →
+          </h3>
         </div>
       </div>
 
-      {/*margin: 'auto',*/}
       <div
         className="section-shop-bottom"
         style={{ width: '1200px', padding: '50px' }}
@@ -126,11 +129,6 @@ const SShop = () => {
             return <ProductItem key={pos} {...configProduct} />;
           })}
         </Carousel>
-      </div>
-      <div className="section-shop-slide">
-        <div className="section-shop-slide-full"></div>
-        <div className="section-shop-slide-empty"></div>
-        <div className="section-shop-slide-empty"></div>
       </div>
     </div>
   );

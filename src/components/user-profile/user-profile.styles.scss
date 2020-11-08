@@ -1,40 +1,38 @@
-.userProfile {
-  display: block;
-  width: 100%;
-  margin: 3rem auto 1rem;
+.user-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  ul,
-  li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  &-header {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    text-transform: uppercase;
   }
 
-  ul {
-    li {
-      display: block;
-      width: 100%;
+  &-block {
+    width: 34%;
+    background-color: #ebebeb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    margin: 11rem;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
+  }
+  &-name {
+    font-size: 1.8rem;
+    font-style: italic;
+    color: rgb(80, 80, 80);
 
-      .img {
-        display: block;
-        width: 5rem;
-        margin: 0 auto;
-
-        img {
-          display: block;
-          width: 100%;
-        }
-      }
-
-      .displayName {
-        display: block;
-        width: 100%;
-        text-align: center;
-        margin: 1rem auto;
-        font-size: 1.8rem;
-        line-height: 1;
-        text-transform: uppercase;
-      }
+    &-box {
+      font-size: 2rem;
     }
+  }
+
+  &-button {
+    display: flex;
+    justify-content: center;
   }
 }

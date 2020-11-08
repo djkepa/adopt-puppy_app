@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { useHistory } from 'react-router-dom';
 
 // Redux
@@ -27,7 +26,6 @@ const CartDropdown = () => {
     history.push('/checkout');
     dispatch(toggleCartHidden());
   };
-  console.log(cartItems);
   return (
     <div className="cart-dropdown">
       <div className="cart-items">

@@ -45,7 +45,7 @@ const CheckoutItem = ({ product }) => {
       <span className="name">{productName}</span>
       <span className="quantity">
         <div className="arrow" onClick={() => handleRemoveItem(product)}>
-          > &#10094;
+          &#10094;
         </div>
         <span className="value">{quantity}</span>
         <div className="arrow" onClick={() => handleAddItem(product)}>

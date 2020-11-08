@@ -1,0 +1,79 @@
+.blogpreview {
+  display: flex;
+  justify-content: center;
+  background-color: #f7dcdc;
+
+  &-date {
+    font-size: 1.3rem;
+  }
+
+  &-backarrow {
+    width: 100%;
+
+    &-icon {
+      cursor: pointer;
+      width: 2.5rem;
+      height: 2.5rem;
+
+      &:hover {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+
+  &-img {
+    // background-image: url('../../assets/bg-blog.jpg');
+    background-size: cover;
+    position: relative;
+    width: 100%;
+  }
+
+  &-box {
+    margin: 5rem;
+    background-color: rgb(239, 241, 243);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 3rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+  }
+
+  &-comment {
+    padding: 5rem;
+  }
+
+  &-img1 {
+    max-width: 90rem;
+    height: 100%;
+  }
+
+  &-author {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+
+    span {
+      font-size: 1.3rem;
+      color: grey;
+    }
+  }
+  &-title {
+    font-size: 4rem;
+    font-weight: 700;
+    padding: 2rem;
+    text-align: center;
+  }
+  &-authorbox {
+    display: flex;
+    align-items: center;
+  }
+
+  &-content {
+    padding: 4rem;
+    font-size: 1.8rem;
+    text-align: justify;
+    width: 85rem;
+  }
+}

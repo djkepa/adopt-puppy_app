@@ -1,20 +1,13 @@
 import React from 'react';
 
-// Icons
-import { ReactComponent as Activity } from './../../../assets/dog-activity.svg';
-import { ReactComponent as Grooming } from './../../../assets/pet-grooming.svg';
-import { ReactComponent as Care } from './../../../assets/care.svg';
-import { ReactComponent as Puppy } from './../../../assets/puppy.svg';
-
 // Styles
 import './s-about.styles.scss';
 export const SAbout = () => {
   return (
     <>
       <div className="section-top">
-        <span class="section-top-arrow section-top-arrow-left"></span>
+        <span className="section-top-arrow section-top-arrow-left"></span>
         <div className="section-top--block">
-          <Grooming className="section-top--block_icon" />
           <div className="section-top--block_text">
             <h4 className="section-top--block_text__h4">Grooming services</h4>
             <p className="section-top--block_text__p">
@@ -23,7 +16,6 @@ export const SAbout = () => {
           </div>
         </div>
         <div className="section-top--block">
-          <Care className="section-top--block_icon" />
           <div className="section-top--block_text">
             <h4 className="section-top--block_text__h4">Veterinary 24/7</h4>
             <p className="section-top--block_text__p">
@@ -32,7 +24,6 @@ export const SAbout = () => {
           </div>
         </div>
         <div className="section-top--block">
-          <Activity className="section-top--block_icon" />
           <div className="section-top--block_text">
             <h4 className="section-top--block_text__h4">Fun Activity</h4>
             <p className="section-top--block_text__p">
@@ -40,13 +31,13 @@ export const SAbout = () => {
             </p>
           </div>
         </div>
-        <span class="section-top-arrow section-top-arrow-right"></span>
+        <span className="section-top-arrow section-top-arrow-right"></span>
       </div>
 
       <div className="section-bottom">
         <div className="section-bottom--left"></div>
         <div className="section-bottom--right">
-          <h4 className="section-bottom--right_h4">--- About Us</h4>
+          <h4 className="section-bottom--right_h4">&#x268A; About Us</h4>
           <h2 className="section-bottom--right_h2">The best for your pet!</h2>
           <p className="section-bottom--right_p1">
             Scripta salutatus repudiandao pro te e t vel adio persius

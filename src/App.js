@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -8,14 +8,19 @@ import WithAuth from './hoc/withAuth';
 import WithAdminAuth from './hoc/withAdminAuth';
 
 // Hooks
-// import useWindowSize from './customHooks/useWindowSize';
+import useScrollHandler from './customHooks/useScrollHandler';
+import useWindowSize from './customHooks/useWindowSize';
 
 // Redux
 import { checkUserSession } from './redux/User/user.actions';
 
 // Components
 import AdminToolbar from './components/admin-toolbar/admin-toolbar.component';
-import BlogItem from './components/blog-item/blog-item.component';
+import CreateBlog from './components/blog-results/create/create-blog.component';
+import BlogPreview from './components/blog-preview/blog-preview.component';
+import UserProfile from './components/user-profile/user-profile.component';
+import EditProfile from './components/user-profile/edit-profile/edit-profile.component';
+import Loader from './components/loader/loader.component';
 
 // Layouts
 import MainLayout from './layouts/MainLayout';
@@ -30,22 +35,41 @@ import Login from './pages/Login/login.page';
 import Recovery from './pages/Recovery/recovery.page';
 import Dashboard from './pages/Dashboard/dashboard.page';
 import Admin from './pages/Admin/admin.page';
-import Search from './pages/Search/search.page';
+import Shop from './pages/Shop/shop.page';
 import ProductDetails from './pages/Product-details/product-details.page';
 import Checkout from './pages/Checkout/checkout.page';
+import Blog from './pages/Blog/blog.page';
+
+import { gsap } from 'gsap';
+
+// Icons
+import { ReactComponent as ScrollBtn } from './assets/rotatearrow.svg';
 
 // Styles
 import './fonts.scss';
 import './default.scss';
 
-function App(props) {
+function App({ hideLoader }) {
   const dispatch = useDispatch();
+  const scroll = useScrollHandler(400);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleScrollClick = () => {
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     dispatch(checkUserSession());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="App">
       <AdminToolbar />
       <Switch>
@@ -60,19 +84,19 @@ function App(props) {
         />
         <Route
           exact
-          path="/search"
+          path="/shop"
           render={() => (
             <MainLayout>
-              <Search />
+              <Shop />
             </MainLayout>
           )}
         />
 
         <Route
-          path="/search/:filterType"
+          path="/shop/:filterType"
           render={() => (
             <MainLayout>
-              <Search />
+              <Shop />
             </MainLayout>
           )}
         />
@@ -117,6 +141,33 @@ function App(props) {
           )}
         />
         <Route
+          path="/blog"
+          exact
+          render={() => (
+            <MainLayout>
+              <Blog />
+            </MainLayout>
+          )}
+        />
+        <Route
+          path="/create-blog"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <CreateBlog />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
+        <Route
+          path="/blog/:blogID"
+          render={() => (
+            <MainLayout>
+              <BlogPreview />
+            </MainLayout>
+          )}
+        />
+        <Route
           path="/dashboard"
           render={() => (
             <WithAuth>
@@ -127,16 +178,27 @@ function App(props) {
           )}
         />
         <Route
-          path="/blog"
-          children={
-            <WithAdminAuth>
-              <BlogItem />
-            </WithAdminAuth>
-          }
-          // render={() => (
-
-          // )}
+          exact
+          path="/account"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <UserProfile />
+              </MainLayout>
+            </WithAuth>
+          )}
         />
+        <Route
+          path="/account/edit"
+          render={() => (
+            <WithAuth>
+              <MainLayout>
+                <EditProfile />
+              </MainLayout>
+            </WithAuth>
+          )}
+        />
+
         <Route
           path="/admin"
           render={() => (
@@ -148,6 +210,13 @@ function App(props) {
           )}
         />
       </Switch>
+
+      <div
+        onClick={handleScrollClick}
+        className={`scrollBtn ${scroll ? 'hide' : 'show'}`}
+      >
+        <ScrollBtn className="scrollBtn-icon" />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,39 @@
+.commentitem {
+  display: flex;
+  flex-direction: column;
+
+  &-textbox {
+    font-size: 1.5rem;
+    font-family: 'Filson Pro Regular';
+    width: 600px;
+    height: 120px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    font-family: Tahoma, sans-serif;
+    border-radius: 8px;
+  }
+
+  &-btnc {
+    display: flex;
+    margin-top: 1rem;
+    align-items: center;
+    font-size: 1.6rem;
+    line-height: 1;
+    font-weight: 400;
+    color: white;
+    background: #d69f5c;
+    padding: 1.3rem 2.7rem;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 36px;
+    line-height: 1;
+    font-family: 'Filson Pro Regular';
+    transition: 0.2s ease;
+
+    &:hover {
+      transform: translatey(-2px);
+    }
+  }
+}

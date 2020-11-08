@@ -21,7 +21,7 @@ export const handleFetchProducts = ({
   persistProducts = [],
 }) => {
   return new Promise((resolve, reject) => {
-    const pageSize = 6;
+    const pageSize = 30;
 
     let ref = firestore
       .collection('products')
@@ -65,7 +65,6 @@ export const handleDeleteProduct = (documentID) => {
       .doc(documentID)
       .delete()
       .then(() => {
-        console.log(documentID, 2);
         resolve();
       })
       .catch((err) => {

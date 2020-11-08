@@ -11,11 +11,21 @@ import {
   signOutUserSuccess,
   resetPasswordSuccess,
   userError,
+  updateProfileSuccess,
+  setLoading,
 } from './user.actions';
-import { handleResetPasswordAPI } from './user.helpers';
+import {
+  handleResetPasswordAPI,
+  handleUpdateEmail,
+  handleStoreImage,
+  handleUpdateProfile,
+} from './user.helpers';
+
+import { displayActionMessage } from '../../utils/displayActionMessage';
 
 export function* getSnapshotFromUserAuth(user, additionalData = {}) {
   try {
+    yield put(setLoading(true));
     const userRef = yield call(handleUserProfile, {
       userAuth: user,
       additionalData,
@@ -27,6 +37,7 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
         ...snapshot.data(),
       }),
     );
+    yield put(setLoading(false));
   } catch (err) {
     console.log(err);
   }
@@ -34,8 +45,10 @@ export function* getSnapshotFromUserAuth(user, additionalData = {}) {
 
 export function* emailSignIn({ payload: { email, password } }) {
   try {
+    yield put(setLoading(true));
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
+    yield put(setLoading(false));
   } catch (err) {
     console.log(err);
   }
@@ -47,9 +60,12 @@ export function* onEmailSignInStart() {
 
 export function* isUserAuthenticated() {
   try {
+    yield put(setLoading(true));
+
     const userAuth = yield getCurrentUser();
     if (!userAuth) return;
     yield getSnapshotFromUserAuth(userAuth);
+    yield put(setLoading(false));
   } catch (err) {
     console.log(err);
   }
@@ -82,10 +98,11 @@ export function* signUpUser({
   }
 
   try {
+    yield put(setLoading(true));
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-
     const additionalData = { displayName };
     yield getSnapshotFromUserAuth(user, additionalData);
+    yield put(setLoading(false));
   } catch (err) {
     console.log(err);
   }
@@ -121,6 +138,57 @@ export function* onGoogleSignInStart() {
   yield takeLatest(userTypes.GOOGLE_SIGN_IN_START, googleSignIn);
 }
 
+export function* updateEmail({ payload }) {
+  try {
+    yield call(handleUpdateEmail, payload.newEmail);
+    yield call(displayActionMessage, 'Email Updated Successfully', 'success');
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+export function* onUpdateEmail() {
+  yield takeLatest(userTypes.UPDATE_EMAIL, updateEmail);
+}
+
+export function* updateProfile({ payload }) {
+  try {
+    yield put(setLoading(true));
+
+    const { id } = payload.credentials;
+    const { avatarFile } = payload.files;
+
+    if (avatarFile) {
+      const avatarURL = avatarFile
+        ? yield call(handleStoreImage, id, 'avatar', avatarFile)
+        : payload.updates.avatar;
+      const updates = {
+        ...payload.updates,
+        avatar: avatarURL,
+      };
+
+      yield call(handleUpdateProfile, id, updates);
+      yield put(updateProfileSuccess(updates));
+    } else {
+      yield call(handleUpdateProfile, id, payload.updates);
+      yield put(updateProfileSuccess(payload.updates));
+    }
+
+    yield call(
+      displayActionMessage,
+      'Profile Updated Successfully!',
+      'success',
+    );
+    yield put(setLoading(false));
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+export function* onUpdateProfile() {
+  yield takeLatest(userTypes.UPDATE_PROFILE, updateProfile);
+}
+
 export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
@@ -129,5 +197,7 @@ export default function* userSagas() {
     call(onSignUpUserStart),
     call(onResetPasswordStart),
     call(onGoogleSignInStart),
+    call(onUpdateEmail),
+    call(onUpdateProfile),
   ]);
 }

@@ -1,52 +1,54 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 // Redux
 import { fetchProductsStart } from '../../redux/Products/products.action';
-
-// Pictures
-import shop1 from '../../assets/shop1.jpg';
+import { selectFilter } from '../../redux/Filter/filter.selectors';
 
 // Components
 import FormSelect from './../forms/form-select/form-select.component';
-// import Product from './product/product.component';
-import LoadMore from './../load-more/load-more.component';
 import ProductItem from './../product-item/product-item.component';
+import Filters from './../filters/filters.component';
+import Loader from './../loader/loader.component';
+
+// Pictures
+import shop1 from '../../assets/shop1.jpg';
 
 //Styles
 import './product-results.styles.scss';
 
 // Map func
-const mapState = ({ productsData }) => ({
+const mapState = ({ productsData, filterData, user }) => ({
   products: productsData.products,
+  filter: filterData,
+  filteredProducts: selectFilter(productsData.products.data, filterData),
+  lastRefKey: productsData.lastRefKey,
+  productsCount: productsData.items.length,
+  totalProductsCount: productsData.total,
+  isLoading: user.loading,
 });
 
-const ProductResults = ({}) => {
+const ProductResults = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { filterType } = useParams();
-  const { products } = useSelector(mapState);
+  const { products, filter, filteredProducts, isLoading } = useSelector(
+    mapState,
+  );
 
-  const { data, queryDoc, isLastPage } = products;
+  const { data, queryDoc } = products;
 
   useEffect(() => {
     dispatch(fetchProductsStart({ filterType }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterType]);
 
   const handleFilter = (e) => {
     const nextFilter = e.target.value;
-    history.push(`/search/${nextFilter}`);
+    history.push(`/shop/${nextFilter}`);
   };
-
-  if (!Array.isArray(data)) return null;
-  if (data.length < 1) {
-    return (
-      <div className="products">
-        <p>No search results.</p>
-      </div>
-    );
-  }
 
   const configFilters = {
     defaultValue: filterType,
@@ -80,50 +82,34 @@ const ProductResults = ({}) => {
   const configLoadMore = {
     onLoadMoreEvt: handleLoadMore,
   };
-
+  const isFiltered = ['keyword', 'minPrice', 'maxPrice', 'sortBy'].some(
+    (key) => !!filter[key],
+  );
   return (
     <>
-      {/* <h1>Browse Products</h1>
-
-      <FormSelect {...configFilters} />
-
-      <div className="productResults">
-        {data.map((product, pos) => {
-          const { productThumbnail, productName, productPrice } = product;
-          if (
-            !productThumbnail ||
-            !productName ||
-            typeof productPrice === 'undefined'
-          )
-            return null;
-
-          const configProduct = {
-            ...product,
-          };
-
-          return <Product key={pos} {...configProduct} />;
-        })}
-      </div>
-
-      {!isLastPage && <LoadMore {...configLoadMore} />} */}
-
       <div className="shop">
-        <div className="shop-headerimage" alt="bgimage">
-          <h2 className="shop-headerimage-text">Our Shop</h2>
-        </div>
         <div className="shop-container">
           <div className="shop-container-left">
             <div className="shop-container-left-top">
               <div className="shop-container-left-top-text">
-                Showing 1 - 6 of 39 results
+                {isFiltered && (
+                  <h5>
+                    {filteredProducts.length > 0 &&
+                      `Found ${filteredProducts.length} ${
+                        filteredProducts.length > 1 ? 'products' : 'product'
+                      }`}
+                  </h5>
+                )}
               </div>
-              <div className="shop-container-left-top-sort">
-                <FormSelect {...configFilters} />
-              </div>
+              <div className="shop-container-left-top-sort"></div>
             </div>
-
+            {filteredProducts.length === 0 && (
+              <div>
+                The are no items found.Try using correct filters or keyword.{' '}
+              </div>
+            )}
             <div className="shop-container-left-mid">
-              {data.map((product, pos) => {
+              {filteredProducts.map((product, pos) => {
                 const { productThumbnail, productName, productPrice } = product;
                 if (
                   !productThumbnail ||
@@ -139,47 +125,19 @@ const ProductResults = ({}) => {
                 return <ProductItem key={pos} {...configProduct} />;
               })}
             </div>
-            <div className="shop-container-left-bottom">
-              {!isLastPage && (
-                <LoadMore
-                  className="shop-container-lett-bottom-btn"
-                  {...configLoadMore}
-                />
-              )}
-            </div>
+            <div className="shop-container-left-bottom"></div>
           </div>
+
           <div className="shop-container-right">
             <div className="shop-container-right-inside">
-              <div className="shop-container-right-inside-h4">Search</div>
-              <input
-                type="text"
-                placeholder="Products"
-                className="shop-container-right-inside-search"
-              />
-              {/* <h5 className="shop-container-right-inside-search-h5">
-                  Products
-                </h5>
-                <span className="shop-container-right-inside-search-icon">
-                  O
-                </span> */}
-              {/* </div> */}
+              <div className="shop-container-right-inside-h4">Category</div>
+
+              <FormSelect {...configFilters} />
+
+              <div className="shop-container-right-inside-h4">Filter</div>
+
               <div className="shop-container-right-inside-filter">
-                <h4 className="shop-container-right-inside-h4">
-                  Filter by price
-                </h4>
-                <div className="shop-container-right-inside-filter-con">
-                  <input
-                    id="typeinp"
-                    type="range"
-                    min="0"
-                    max="5"
-                    defaultValue="3"
-                    step="1"
-                  />
-                </div>
-                <button className="shop-container-right-inside-filter-button">
-                  Filter
-                </button>
+                <Filters filter={filter} products={data} />
               </div>
 
               <div className="shop-container-right-inside-special">
@@ -200,14 +158,7 @@ const ProductResults = ({}) => {
                         Sweet Snack
                       </div>
 
-                      <div className="shop-container-right-inside-special-block-box-top-link">
-                        {/* <Link
-                          to="/react"
-                          className="shop-container-right-inside-special-block-box-top-link-bg"
-                        >
-                          Check product →
-                        </Link> */}
-                      </div>
+                      <div className="shop-container-right-inside-special-block-box-top-link"></div>
                     </div>
 
                     <div className="shop-container-right-inside-special-block-box-bottom">
@@ -229,14 +180,7 @@ const ProductResults = ({}) => {
                         Sweet Snack
                       </div>
 
-                      <div className="shop-container-right-inside-special-block-box-top-link">
-                        {/* <Link
-                          to="/react"
-                          className="shop-container-right-inside-special-block-box-top-link-bg"
-                        >
-                          Check product →
-                        </Link> */}
-                      </div>
+                      <div className="shop-container-right-inside-special-block-box-top-link"></div>
                     </div>
 
                     <div className="shop-container-right-inside-special-block-box-bottom">
@@ -258,14 +202,7 @@ const ProductResults = ({}) => {
                         Sweet Snack
                       </div>
 
-                      <div className="shop-container-right-inside-special-block-box-top-link">
-                        {/* <Link
-                          to="/react"
-                          className="shop-container-right-inside-special-block-box-top-link-bg"
-                        >
-                          Check product →
-                        </Link> */}
-                      </div>
+                      <div className="shop-container-right-inside-special-block-box-top-link"></div>
                     </div>
 
                     <div className="shop-container-right-inside-special-block-box-bottom">

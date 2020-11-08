@@ -1,43 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import CKEditor from 'ckeditor4-react';
+// Utils
+import { displayDateShort } from '../../utils/displayDate';
 
-// Components
-import ModalPortal from '../modal-portal/modal-portal.component';
-import FormInput from '../forms/form-input/form-input.component';
+// Custom hooks
+import useScrollTop from '../../customHooks/useScrollTop';
+
+// Icons
+import { ReactComponent as Read } from '../../assets/read.svg';
 
 // Styles
 import './blog-item.styles.scss';
 
-const BlogItem = ({ opened, close }) => {
-  const [blogTitle, setBlogTitle] = useState('');
-  const [blogImage, setBlogImage] = useState('');
-  const [blogContent, setBlogContent] = useState('');
-  const history = useHistory();
+const BlogItem = (blog) => {
+  useScrollTop();
+
+  const { documentID, title, image, content, createdAt } = blog;
+
   return (
-    <ModalPortal opened={opened} close={close}>
-      <div className="box">
-        <div className="tworow">
-          <FormInput
-            label="Title"
-            type="text"
-            value={blogTitle}
-            handleChange={(e) => setBlogTitle(e.target.value)}
+    <>
+      <div key={documentID} className="blogitem">
+        <Link to={`/blog/${documentID}`}>
+          <img src={image} alt={title} className="blogitem-image" />
+        </Link>
+        <div className="blogitem-box">
+          <Link className="blogitem-box-title" to={`/blog/${documentID}`}>
+            {title}
+          </Link>
+          <p
+            className="blogitem-box-content"
+            dangerouslySetInnerHTML={{ __html: content }}
           />
 
-          <FormInput
-            label="Image link"
-            type="text"
-            value={blogImage}
-            handleChange={(e) => setBlogImage(e.target.value)}
-          />
+          <div className="blogitem-box-bottom">
+            <div className="blogitem-box-date">
+              {displayDateShort(createdAt)}
+            </div>
+            <Link to={`/blog/${documentID}`}>
+              <Read className="blogitem-box-icon" />
+            </Link>
+          </div>
         </div>
-
-        <CKEditor onChange={(evt) => setBlogContent(evt.editor.getData())} />
       </div>
-    </ModalPortal>
+    </>
   );
 };
 export default BlogItem;

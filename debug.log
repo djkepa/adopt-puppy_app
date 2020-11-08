@@ -1,0 +1,7 @@
+[1030/121023.240:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1031/014434.975:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1031/014434.978:ERROR:exception_snapshot_win.cc(99)] thread ID 9268 not found in process
+[1031/014435.017:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1031/014435.017:ERROR:exception_snapshot_win.cc(99)] thread ID 10212 not found in process
+[1105/120724.733:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1105/120724.748:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\KORISNIK\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\5e8dfee5-0de9-4b6a-baaa-5b44504b228b: The system cannot find the path specified. (0x3)

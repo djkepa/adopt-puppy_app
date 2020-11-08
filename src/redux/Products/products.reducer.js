@@ -4,6 +4,9 @@ import productTypes from './products.types';
 const INITIAL_STATE = {
   products: [],
   product: {},
+  lastRefKey: null,
+  total: 0,
+  items: [],
 };
 
 const productsReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +21,7 @@ const productsReducer = (state = INITIAL_STATE, action) => {
         ...state,
         product: action.payload,
       };
+
     default:
       return state;
   }
