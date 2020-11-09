@@ -6,5 +6,5 @@ Functionalities:
 - User: Sign up, Log in, Edit Profile, Add Avatar & Sign out.
 - User: Add blog, delete blog, add comment, delete comment, order products, cart dropdown (add, remove product), checkout.
 - Admin: Add product, delete product, add blog, delete blog, add comment, detele comment. 
-![alt text](https://i.ibb.co/0QCWjbY/finaladopt.jpg)
+![alt text](https://i.ibb.co/H2DxRjp/finishingadopt.jpg)
 
